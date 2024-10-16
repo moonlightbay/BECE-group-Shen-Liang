@@ -11,7 +11,7 @@ from matplotlib.animation import FuncAnimation
 # 初始化串口
 def init_serial():
     try:
-        ser = serial.Serial('COM9', baudrate=57600, timeout=1)
+        ser = serial.Serial('COM3', baudrate=57600, timeout=1)
         return ser
     except serial.SerialException as e:
         print(f"Error initializing serial port: {e}")
@@ -67,7 +67,7 @@ def read_serial():
                         else:
                             signal_quality = "Bad"
                             signal_good = False
-                        ser.read(2)  # 00 03
+                        ser.read(1)  #03
                         data = ser.read(1)
                         heart_rate = int.from_bytes(data, byteorder='big')  # 将心率数据转换为十进制数
         except serial.SerialException as e:
